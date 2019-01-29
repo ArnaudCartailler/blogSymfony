@@ -6,36 +6,20 @@
 
 <section class="articles">
 
-<article>
-    <h2>title de l'article</h2>
-    <div class="metadata">Ecrit le 29/01/2019 dans la catégorie jeu</div>
-    <div class="content">
-        <img src="http://placehold.it/350x150" alt="">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit neque iusto fugit pariatur quod numquam.</p>
-        <p>Nesciunt facilis, libero ipsam quisquam laudantium, sit laboriosam nisi iure nostrum beatae molestias vitae dolore.</p>
-        <a href="{{ path('blog_show') }}" class="btn btn-primary">Lire la suite</a>
-    </div>
-</article>
-<article>
-    <h2>title de l'article</h2>
-    <div class="metadata">Ecrit le 29/01/2019 dans la catégorie jeu</div>
-    <div class="content">
-        <img src="http://placehold.it/350x150" alt="">
-        <p>Dolor nam, voluptatem quos sit reprehenderit itaque temporibus ab voluptates blanditiis necessitatibus natus aperiam tenetur.</p>
-        <p>Debitis laborum eveniet, et quo sit, voluptate asperiores aut quasi aliquam iure nesciunt dignissimos facilis?</p>
-        <a href="{{ path('blog_show') }}" class="btn btn-primary">Lire la suite</a>
-    </div>
-</article>
-<article>
-    <h2>title de l'article</h2>
-    <div class="metadata">Ecrit le 29/01/2019 dans la catégorie jeu</div>
-    <div class="content">
-        <img src="http://placehold.it/350x150" alt="">
-        <p>Impedit illo facere aliquam quod necessitatibus. Ipsum consequatur excepturi quam blanditiis corporis, error distinctio amet?</p>
-        <p>Aperiam reprehenderit suscipit illum excepturi vitae porro cumque provident debitis quisquam eos. Ex, quia placeat!</p>
-        <a href="{{ path('blog_show') }}" class="btn btn-primary">Lire la suite</a>
-    </div>
-</article>
+{% for article in articles %}
+
+    <article>
+        <h2>{{ article.title }}</h2>
+<div class="metadata">Ecrit le
+    {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }} dans la catégorie jeu</div>
+        <div class="content">
+            <img src="{{ article.image }}" alt="">
+            {{ article.content | raw}}
+            <a href="{{ path('blog_show', {'id': article.id}) }}" class="btn btn-primary">Lire la suite</a>
+        </div>
+    </article>
+
+{% endfor %}
 
 </section>
 
